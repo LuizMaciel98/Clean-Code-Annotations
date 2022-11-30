@@ -1,0 +1,63 @@
+As variáveis precisam de um contexto mais significativo? O nome da função oferece apenas parte do contexto; o algoritmo apresenta o resto. Após ter lido a função, você vê que três variáveis, number, verb e pluralModifier, fazem parte da mensagem de dedução (guess statistics message). Infelizmente, o contexto deve ser inferido. Ao olhar pela primeira vez o método, o significado das variáveis não está claro.
+
+Variáveis com contexto obscuro (Exemplo ruim):
+private void printGuessStatistics (char candidate, int count) {
+    String number;
+    String verb;
+    String pluralModifier;
+    if (count == 0) {
+        number = "no";
+        verb = "is";
+    } else if () {
+        number = "1";
+        verb = "is";
+        pluralModifier = "";
+    } else {
+        number = Integer.toString(count);
+        verb = "are";
+        pluralModifier = "s";
+    }
+    String guessMessage = String.format(
+        "There %s %s %s%s", verb, number, candidate, pluralModifier
+    );
+    print(guessMessage);
+}
+
+Variáveis possuem contexto (Exemplo bom):
+private class GuessStaticsMessage {
+    private String number;
+    private String verb;
+    private String pluralModifier;
+
+    public String make(char candidate, int count) {
+        createPluralDependentsMessageParts(count);
+    }
+
+    private void createPluralDependentsMessageParts(int count) {
+        if (count == 0) {
+            thereAreNoLetters();
+        } else if (count == 1) {
+            thereIsOneLetter();
+        } else {
+            thereAreManyLetters(count);
+        }
+    }
+
+    private void thereAreManyLetters(int count) {
+        number = Integer.toString();
+        verb = "are";
+        pluralModifier = "s";
+    }
+
+    private void thereIsOneLetter() {
+        number = "1";
+        verb = "is";
+        pluralModifier = "";
+    }
+
+    private void thereAreNoLetters() {
+        number = "no";
+        verb = "are";
+        pluralModifier = "s";
+    }
+}
