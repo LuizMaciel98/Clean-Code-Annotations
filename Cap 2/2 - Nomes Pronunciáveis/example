@@ -1,0 +1,20 @@
+Nomes pronunciáveis página 22
+Se não puder pronunciálo, não terá como discutir sobre tal nome sem parecer um idiota. "Bem, aqui no bê cê errer três cê ene tê, temos um pê esse zê quê int, viram?" Isso importa porque a programação é uma atividade social.
+
+Exemplo ruim:
+class DtaRecrd102 {
+    private Date genymdhms;
+    private Date modymdhms;
+    private final String pszqint = "102";
+    /* ... */
+}
+
+Exemplo bom:
+class Customer {
+    private Date generationTimestamp;
+    private Date modificationTimestamp;
+    private final String recordId = "102";
+    /* ... */
+}
+
+Agora é possível uma conversa inteligente: "Ei mikey, dê uma olhada este registro! O momento de geração (generation timestamp) ("criação de marcação de horário") está marcado para amanhã! como pode?".
