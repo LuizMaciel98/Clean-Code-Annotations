@@ -1,0 +1,47 @@
+Nomes que revelem seu propósito - Páginas 18 e 19
+
+O nome de uma variável, função ou classe deve responder a todas as grandes questões. Ele deve lhe dizer porque existe, o que faz e como é usado. Se um nome requer um comentário, então ele não revela seu propósito.
+
+Exemplo ruim:
+int d; // tempo decorrido em dias
+
+O nome d não revela nada. Ele não indica a ideia de tempo decorrido, nem de dias. Devemos escolher um nome que especifique seu uso para mensuração e a unidade usada.
+
+Bons exemplos:
+int elapsedTimeInDays;
+int daysSinceCreation;
+int daysSinceModification;
+int fileAgeInDays;
+
+Exemplo ruim:
+public List<int[]> getThem() {
+    List<int[]> list1 = new ArrayList<int[]>();
+    for (int[] x : theList)
+        if (x[0] == 4)
+            list1.add(x);
+    return list1;
+}
+Problemas/perguntas que podem ser feitas neste trecho de código:
+1. Que tipos de coisas estão em theList?
+2. Qual a importância de um item na posição zero na theList?
+3. Qual a importância do valor 4?
+4. Como eu usaria a lista retornada?
+
+Exemplo mediano:
+public List<int[]> getFlaggedCells() {
+    List<int[]> flaggedCells = new ArrayList<int[]>();
+    for (int[] cell : gameBoard)
+        if(cell[STATUS_VALUE] == FLAGGED)
+            flaggedCells.add(cell);
+    return flaggedCells;
+}
+
+Podemos continuar e criar uma classe simples para as células, em vez de usar vetor intS. Ela pode ter uma função com um nome que revele seu próprio propósito (chama is Flagged, ou seja "está marcada com uma bandeirinha") para ocultar números mágicos. O resultado é uma nova versão da função:
+Exemplo bom:
+public List<int[]> getFlaggedCells() {
+    List<Cell> flaggedCells = new ArrayList<Cell>();
+    for (Cell cell : gameBoard)
+        if (cell.isFlagged())
+            flaggedCells.add(cell);
+    return flaggedCells;
+}
